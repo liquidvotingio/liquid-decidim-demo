@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_24_145768) do
+ActiveRecord::Schema.define(version: 2020_09_24_151734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -59,6 +59,26 @@ ActiveRecord::Schema.define(version: 2020_09_24_145768) do
     t.datetime "updated_at", null: false
     t.index ["decidim_accountability_result_id"], name: "index_decidim_accountability_timeline_entries_on_results_id"
     t.index ["entry_date"], name: "index_decidim_accountability_timeline_entries_on_entry_date"
+  end
+
+  create_table "decidim_action_delegator_delegations", force: :cascade do |t|
+    t.bigint "granter_id", null: false
+    t.bigint "grantee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "decidim_action_delegator_setting_id", null: false
+    t.index ["decidim_action_delegator_setting_id"], name: "index_decidim_delegations_on_action_delegator_setting_id"
+    t.index ["grantee_id"], name: "index_decidim_action_delegator_delegations_on_grantee_id"
+    t.index ["granter_id"], name: "index_decidim_action_delegator_delegations_on_granter_id"
+  end
+
+  create_table "decidim_action_delegator_settings", force: :cascade do |t|
+    t.datetime "expires_at", null: false
+    t.integer "max_grants", limit: 2, default: 0, null: false
+    t.bigint "decidim_consultation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_consultation_id"], name: "index_decidim_settings_on_decidim_consultation_id"
   end
 
   create_table "decidim_action_logs", force: :cascade do |t|
@@ -1442,6 +1462,8 @@ ActiveRecord::Schema.define(version: 2020_09_24_145768) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "decidim_action_delegator_delegations", "decidim_action_delegator_settings"
+  add_foreign_key "decidim_action_delegator_settings", "decidim_consultations"
   add_foreign_key "decidim_area_types", "decidim_organizations"
   add_foreign_key "decidim_areas", "decidim_area_types", column: "area_type_id"
   add_foreign_key "decidim_areas", "decidim_organizations"
