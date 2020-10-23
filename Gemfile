@@ -5,8 +5,7 @@ source "https://rubygems.org"
 ruby RUBY_VERSION
 
 gem "decidim", "0.22.0"
-# gem "decidim-consultations", "0.22.0"
-# gem "decidim-initiatives", "0.22.0"
+gem "decidim-proposals", "0.22.0"
 
 gem "bootsnap", "~> 1.4.6"
 
