@@ -1,3 +1,10 @@
+PATH
+  remote: ../decidim-liquidvoting
+  specs:
+    decidim-liquidvoting (0.1)
+      decidim-core (= 0.22.0)
+      graphql-client (~> 0.16.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -389,6 +396,9 @@ GEM
       railties
       sprockets-rails
     graphql (1.11.5)
+    graphql-client (0.16.0)
+      activesupport (>= 3.0)
+      graphql (~> 1.8)
     hashdiff (1.0.1)
     hashie (3.6.0)
     highline (2.0.3)
@@ -756,6 +766,7 @@ DEPENDENCIES
   byebug (~> 11.0)
   decidim (= 0.22.0)
   decidim-dev (= 0.22.0)
+  decidim-liquidvoting!
   decidim-proposals (= 0.22.0)
   faker (~> 1.9)
   letter_opener_web (~> 1.3)
