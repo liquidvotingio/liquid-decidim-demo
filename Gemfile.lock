@@ -3,6 +3,7 @@ PATH
   specs:
     decidim-liquidvoting (0.1)
       decidim-core (= 0.22.0)
+      decidim-proposals (= 0.22.0)
       graphql-client (~> 0.16.0)
 
 GEM
