@@ -1,5 +1,5 @@
 PATH
-  remote: ../decidim-liquidvoting
+  remote: ../decidim-module-liquidvoting
   specs:
     decidim-liquidvoting (0.1)
       decidim-core (= 0.22.0)
