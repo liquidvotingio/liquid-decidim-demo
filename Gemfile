@@ -4,8 +4,8 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "decidim", "0.24.0.rc2"
-gem "decidim-proposals", "0.24.0.rc2"
+gem "decidim", "0.24.0"
+gem "decidim-proposals", "0.24.0"
 gem "decidim-liquidvoting", path: "../decidim-module-liquidvoting"
 
 gem "bootsnap", "~> 1.4.6"
@@ -18,7 +18,7 @@ gem "faker", "~> 2.14"
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
 
-  gem "decidim-dev", "0.24.0.rc2"
+  gem "decidim-dev", "0.24.0"
 end
 
 group :development do
