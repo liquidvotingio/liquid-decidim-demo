@@ -1,0 +1,21 @@
+# copied from https://github.com/OpenSourcePolitics/osp-app-k8s/blob/master/config/sidekiq.yml
+# we still have to figure out which queues and cronjobs we need for the demo
+:concurrency: 20
+:queues:
+  - default
+  - mailers
+  - newsletter
+  - newsletters_opt_in
+  - events
+  - metrics
+  - scheduled
+
+:schedule:
+  CalculateAllMetrics:
+    cron: '0 0 0 * * *'
+    class: CalculateAllMetricsJob
+    queue: scheduled
+  PreloadOpenData:
+    cron: '0 0 1 * * *'
+    class: PreloadOpenDataJob
+    queue: scheduled
