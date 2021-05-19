@@ -5,6 +5,7 @@ source "https://rubygems.org"
 ruby RUBY_VERSION
 
 gem "decidim", "0.24.0"
+gem "decidim-assemblies", "0.24.0"
 gem "decidim-proposals", "0.24.0"
 gem "decidim-liquidvoting", path: "../decidim-module-liquidvoting"
 
