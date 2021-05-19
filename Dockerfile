@@ -5,6 +5,7 @@ ENV LC_ALL C.UTF-8
 ENV RAILS_ENV production
 ENV SECRET_KEY_BASE=no_need_for_such_secrecy
 ENV RAILS_SERVE_STATIC_FILES=true
+ENV RAILS_LOG_TO_STDOUT true
 
 RUN apt-get install -y git imagemagick wget \
   && apt-get clean
