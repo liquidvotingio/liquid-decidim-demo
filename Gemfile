@@ -5,7 +5,8 @@ source "https://rubygems.org"
 ruby RUBY_VERSION
 
 gem "decidim", "0.24.0"
-gem "decidim-liquidvoting", path: "../decidim-module-liquidvoting"
+gem "decidim-liquidvoting", git: "https://github.com/liquidvotingio/decidim-module-liquidvoting"
+# gem "decidim-liquidvoting", path: "../decidim-module-liquidvoting"
 
 gem "bootsnap", "~> 1.4.6"
 
@@ -26,4 +27,8 @@ group :development do
   gem "spring", "~> 2.0"
   gem "spring-watcher-listen", "~> 2.0"
   gem "web-console", "~> 3.5"
+end
+
+group :production do
+  gem "sidekiq"
 end

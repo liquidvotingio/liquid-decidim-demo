@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: decidim-demo-redis-svc
+  labels:
+    app: decidim-demo-redis
+spec:
+  ports:
+  - port: 6379
+    targetPort: 6379
+  selector: # Map any Pod with the specified labels to this service
+    app: decidim-demo-redis
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: decidim-demo-redis-deployment
+  labels:
+    app: decidim-demo-redis
+spec:
+  selector:
+    matchLabels:
+      app: decidim-demo-redis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: decidim-demo-redis
+    spec:
+      containers:
+        - image: redis:6.2.3-alpine
+          name: redis
+          args: ['--bind', '0.0.0.0']
+          ports:
+            - containerPort: 6379
+              name: redis
+          volumeMounts:
+            - name: redis-pv
+              mountPath: /data
+      volumes:
+        - name: redis-pv
+          persistentVolumeClaim:
+            claimName: decidim-demo-redis-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: decidim-demo-redis-pvc
+  labels:
+    app: decidim-demo-redis
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

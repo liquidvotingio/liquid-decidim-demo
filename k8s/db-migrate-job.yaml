@@ -1,0 +1,35 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: decidim-demo-db-migrate-
+spec:
+  template:
+    spec:
+      containers:
+      - name: main
+        image: ghcr.io/liquidvotingio/liquid-decidim-demo:latest
+        imagePullPolicy: IfNotPresent
+        command:
+        - rails
+        - db:migrate
+        env:
+          - name: DB_HOST
+            value: decidim-demo-postgres-svc.default.svc.cluster.local
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: decidim-demo-postgres-config
+                key: postgres-dbname
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: decidim-demo-postgres-config
+                key: postgres-username
+          - name: DB_PASSWD
+            valueFrom:
+              secretKeyRef:
+                name: decidim-demo-postgres-config
+                key: postgres-password
+          - name: DATABASE_URL
+            value: postgres://$(DB_USER):$(DB_PASSWD)@$(DB_HOST):5432/$(DB_NAME)
+      restartPolicy: Never
