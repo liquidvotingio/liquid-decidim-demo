@@ -4,16 +4,12 @@ metadata:
   name: decidim-demo-redis-svc
   labels:
     app: decidim-demo-redis
-    role: master
-    tier: backend
 spec:
   ports:
   - port: 6379
     targetPort: 6379
   selector: # Map any Pod with the specified labels to this service
     app: decidim-demo-redis
-    role: master
-    tier: backend
 ---
 apiVersion: apps/v1
 kind: Deployment
