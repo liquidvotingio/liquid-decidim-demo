@@ -4,34 +4,34 @@ on:
   push:
     branches: master
 
-jobs:
-  build-publish:
-    name: Build & Publish Image
-    runs-on: ubuntu-latest
-    env:
-      IMAGE_NAME: ghcr.io/liquidvotingio/liquid-decidim-demo
-      TAG: ${{ github.sha }}
+# jobs:
+#   build-publish:
+#     name: Build & Publish Image
+#     runs-on: ubuntu-latest
+#     env:
+#       IMAGE_NAME: ghcr.io/liquidvotingio/liquid-decidim-demo
+#       TAG: ${{ github.sha }}
 
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build liquid-decidim-demo Image
-      run: |
-        docker build \
-        -t $IMAGE_NAME:$TAG .
-        docker tag $IMAGE_NAME:$TAG $IMAGE_NAME:latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Build liquid-decidim-demo Image
+#       run: |
+#         docker build \
+#         -t $IMAGE_NAME:$TAG .
+#         docker tag $IMAGE_NAME:$TAG $IMAGE_NAME:latest
 
-    - name: Publish decidim-staging Image to Github Container Registry
-      uses: azure/docker-login@v1
-      with:
-        login-server: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.CONTAINER_REGISTRY_PAT }}
-    - run: |
-        docker push $IMAGE_NAME
+#     - name: Publish decidim-staging Image to Github Container Registry
+#       uses: azure/docker-login@v1
+#       with:
+#         login-server: ghcr.io
+#         username: ${{ github.actor }}
+#         password: ${{ secrets.CONTAINER_REGISTRY_PAT }}
+#     - run: |
+#         docker push $IMAGE_NAME
 
   deploy:
     name: Deploy to Linode
-    needs: [build-publish]
+    # needs: [build-publish]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
