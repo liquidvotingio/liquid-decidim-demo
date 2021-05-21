@@ -28,3 +28,18 @@ jobs:
         password: ${{ secrets.CONTAINER_REGISTRY_PAT }}
     - run: |
         docker push $IMAGE_NAME
+
+  deploy:
+    name: Deploy to Linode
+    needs: [build-publish]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Deploy
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.LINODE_KUBE_CONFIG }}
+      run: |
+        echo "$KUBE_CONFIG_DATA" | base64 --decode > /tmp/config
+        export KUBECONFIG=/tmp/config
+        kubectl rollout restart deployment/decidim-demo-deployment
+        kubectl rollout restart deployment/decidim-demo-sidekiq-deployment
