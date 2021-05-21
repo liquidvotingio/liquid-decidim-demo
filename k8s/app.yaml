@@ -62,6 +62,8 @@ spec:
                 key: postgres-password
           - name: DATABASE_URL
             value: postgres://$(DB_USER):$(DB_PASSWD)@$(DB_HOST):5432/$(DB_NAME)
+          - name: REDIS_URL
+            value: redis://decidim-demo-redis-svc.default.svc.cluster.local:6379/0
           - name: HOSTNAME
             valueFrom:
               fieldRef:
