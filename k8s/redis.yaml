@@ -8,9 +8,9 @@ metadata:
     tier: backend
 spec:
   ports:
-  - port: 6379       # Map incoming connections on port 6379 to the target port 6379 of the Pod
+  - port: 6379
     targetPort: 6379
-  selector:          # Map any Pod with the specified labels to this service
+  selector: # Map any Pod with the specified labels to this service
     app: decidim-demo-redis
     role: master
     tier: backend

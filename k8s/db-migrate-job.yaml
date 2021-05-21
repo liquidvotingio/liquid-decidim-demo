@@ -7,14 +7,14 @@ spec:
     spec:
       containers:
       - name: main
+        image: ghcr.io/liquidvotingio/liquid-decidim-demo:latest
+        imagePullPolicy: IfNotPresent
         command:
         - rails
         - db:migrate
-        image: ghcr.io/liquidvotingio/liquid-decidim-demo:latest
-        imagePullPolicy: IfNotPresent
         env:
           - name: DB_HOST
-            value: decidim-demo-db.default.svc.cluster.local
+            value: decidim-demo-postgres-svc.default.svc.cluster.local
           - name: DB_NAME
             valueFrom:
               secretKeyRef:
