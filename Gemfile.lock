@@ -1,5 +1,6 @@
-PATH
-  remote: ../decidim-module-liquidvoting
+GIT
+  remote: https://github.com/liquidvotingio/decidim-module-liquidvoting
+  revision: ecd7207e571b12e4027d0bd223f347c3c104a840
   specs:
     decidim-liquidvoting (0.24.0)
       decidim-core (= 0.24.0)
@@ -126,6 +127,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.8)
+    connection_pool (2.2.5)
     cookiejar (0.3.3)
     crack (0.4.5)
       rexml
@@ -743,6 +745,10 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     seven_zip_ruby (1.3.0)
+    sidekiq (6.2.1)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     simplecov (0.19.1)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -835,6 +841,7 @@ DEPENDENCIES
   letter_opener_web (~> 1.3)
   listen (~> 3.1)
   puma (>= 5.0.0)
+  sidekiq
   spring (~> 2.0)
   spring-watcher-listen (~> 2.0)
   uglifier (~> 4.1)
