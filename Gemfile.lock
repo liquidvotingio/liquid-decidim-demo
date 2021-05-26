@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/liquidvotingio/decidim-module-liquidvoting
-  revision: 6a1113a0dddb79656c845db5af0cc3273f575605
+  revision: 0e6532d133ce02a5cb2189fe787bba9cd7245c6d
   specs:
     decidim-liquidvoting (0.24.0)
       decidim-core (= 0.24.0)
