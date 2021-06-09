@@ -2,10 +2,10 @@
 
 Decidim.configure do |config|
   # The name of the application
-  config.application_name = "My Application Name"
+  config.application_name = "Liquid Decidim Demo"
 
   # The email that will be used as sender in all emails from Decidim
-  config.mailer_sender = "change-me@domain.org"
+  config.mailer_sender = "demo@liquidvoting.io"
 
   # Sets the list of available locales for the whole application.
   #
