@@ -13,4 +13,3 @@ linode:
   secret_access_key: <%= ENV["LINODE_BUCKET_ACCESS_KEY"] %>
   region: default
   bucket: liquid-decidim-demo
-  public: true
