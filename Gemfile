@@ -31,5 +31,5 @@ end
 
 group :production do
   gem "sidekiq"
-  gem "aws-sdk-s3"
+  gem "aws-sdk"
 end
