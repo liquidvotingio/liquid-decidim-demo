@@ -31,5 +31,6 @@ end
 
 group :production do
   gem "sidekiq"
-  gem "aws-sdk"
+  gem "fog-linode"
+  gem "fog-core", "~> 1.43"
 end
