@@ -32,4 +32,5 @@ end
 group :production do
   gem "sidekiq"
   gem "fog-aws"
+  gem "aws-sdk-s3"
 end
