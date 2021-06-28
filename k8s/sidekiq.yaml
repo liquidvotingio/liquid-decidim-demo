@@ -47,6 +47,16 @@ spec:
             value: postgres://$(DB_USER):$(DB_PASSWD)@$(DB_HOST):5432/$(DB_NAME)
           - name: REDIS_URL
             value: redis://decidim-demo-redis-svc.default.svc.cluster.local:6379/0
+          - name: LINODE_BUCKET_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: linode-bucket-config
+                key: access-key
+          - name: LINODE_BUCKET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: linode-bucket-config
+                key: secret-key
         resources:
           requests:
              cpu: "75m"
