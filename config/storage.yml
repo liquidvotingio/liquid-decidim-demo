@@ -8,7 +8,7 @@ local:
 
 linode:
   service: S3
-  endpoint: https://liquid-decidim-demo.eu-central-1.linodeobjects.com
+  endpoint: https://eu-central-1.linodeobjects.com
   access_key_id: <%= ENV["LINODE_BUCKET_KEY_ID"] %>
   secret_access_key: <%= ENV["LINODE_BUCKET_ACCESS_KEY"] %>
   region: default
