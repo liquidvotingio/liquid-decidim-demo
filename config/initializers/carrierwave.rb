@@ -14,7 +14,6 @@ if ENV["LINODE_BUCKET_KEY_ID"].present?
       endpoint:              'https://eu-central-1.linodeobjects.com' # optional, defaults to nil
     }
     config.fog_directory  = 'liquid-decidim-demo'             # required
-    config.fog_public     = false                             # optional, defaults to true
     config.fog_attributes = {
       'Cache-Control' => "max-age=#{365.day.to_i}",
       'X-Content-Type-Options' => "nosniff"
